@@ -1,0 +1,8 @@
+<button class="btn btn-primary" (click)="onToggleDetails()">Display Details</button>
+<p *ngIf="displayDetails; else showBr">Secret password = tuna</p>
+<ng-template #showBr>
+  <p style="color: transparent;"> toca pra mudar a senha</p>
+</ng-template>
+
+<p *ngFor="let click of clicks; let indexOf=index" [ngStyle]="{background: getColor(indexOf)}"
+  [ngClass]="{fifthPlus: indexOf >=4 }">{{ click }}</p>
