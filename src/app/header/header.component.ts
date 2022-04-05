@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   collapsed = true;
+  @Output() showRecipesEvent = new EventEmitter<string>();
+  selectedScreen: string;
 
-  constructor() { }
+  constructor() {
+    this.selectedScreen = 'recipes';
+  }
 
   ngOnInit() {
   }
 
+  onSelect(screen: string) {
+    this.selectedScreen = screen;
+    this.showRecipesEvent.emit(this.selectedScreen);
+  }
 }
