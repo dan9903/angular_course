@@ -7,13 +7,21 @@ import { CounterService } from '../counter.service';
   styleUrls: ['./counter.component.css']
 })
 export class CounterComponent implements OnInit {
-  actions: number;
+  inactiveCounter: number;
+  activeCounter: number;
 
   constructor(private counterService: CounterService) {
-    this.counterService.counterUpdated.subscribe((counter: number) => this.actions = counter);
+    this.counterService.counterUpdated.subscribe((res: {counter: number, type: string}) => {
+      if (res.type === 'active') {
+        this.activeCounter = res.counter;
+      } else {
+        this.inactiveCounter = res.counter;
+      }
+    });
   }
 
   ngOnInit() {
-    this.actions = this.counterService.actions;
+    this.activeCounter = this.counterService.activeCounter;
+    this.inactiveCounter = this.counterService.inactiveCounter;
   }
 }

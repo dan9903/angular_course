@@ -1,11 +1,17 @@
 import { EventEmitter } from '@angular/core';
 
 export class CounterService {
-  actions = 0;
-  counterUpdated = new EventEmitter<number>();
+  activeCounter = 0;
+  inactiveCounter = 0;
+  counterUpdated = new EventEmitter<{counter: number, type: string}>();
 
-  add() {
-    this.actions++;
-    this.counterUpdated.emit(this.actions);
+  increaseCounter(type: string): void {
+    let counter = 0;
+    if (type === 'active') {
+      counter = ++this.activeCounter;
+    } else {
+      counter = ++this.inactiveCounter;
+    }
+    this.counterUpdated.emit( {counter, type});
   }
 }
