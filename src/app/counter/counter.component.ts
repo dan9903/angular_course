@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CounterService } from '../counter.service';
 
 @Component({
@@ -16,6 +16,4 @@ export class CounterComponent implements OnInit {
   ngOnInit() {
     this.actions = this.counterService.actions;
   }
-
-
 }
