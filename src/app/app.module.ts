@@ -34,7 +34,6 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    AppRoutingModule
   ],
   providers: [ShoppingListService ],
   bootstrap: [AppComponent]
